@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Tutorials";
+}
+<div class="row" style="float:right">
+    <div style="margin-right:15px">
+        <form action="/Home/searchVideo" method="post">
+            <input type="text" class="btn" name="v" size="21" style="margin-top:5px;margin-right:5px" maxlength="120"><br>
+            <input type="submit" class="btn" value="search" style="float:right;margin-right:5px">
+        </form>
+    </div>
+
+</div>
+<div class="jumbotron" style="margin-bottom:40px">
+
+    <h2>Virtual Class Provides Online Tutorials</h2>
+    <img height="200" width="1000" id="img_logo" alt="Logo" src=@Url.Content("~/Images/enchanted_library-851x315.jpg") />
+    <p class="lead" style="color:white">Virtual Class Is Here To serve The Facility You With The Knowledge Which you share with each other.</p>
+
+</div>
+
+
+<div id="menu" style="background-color:#111111;height:736px;width:130px;float:left;">
+
+
+
+    <b>@Html.ActionLink("Download Books", "DownloadBooks", "Home")</b><br>
+    @Html.ActionLink("Read Books Online", "ReadBooksOnline", "Home")<br>
+    
+
+</div>
+
+
+<div id="content" style="background-color:#EEEEEE;width:1010px ;float:left;">
+    <div style="text-align:center">
+        <div>
+           @foreach(var i in Model)
+            {
+                
+               i.video_url ="../Videos/"+ i.video_url;
+               <h1>@i.video_url</h1>
+            <video width="620" height="540" controls>
+                <source src="@i.video_url"  type="video/mp4">
+            </video><br>
+            }
+            <video width="620" height="540" controls>
+                <source src="~/Videos/1.mp4" type="video/mp4">
+            </video><br>
+            <video width="620" height="540" controls>
+                <source src="~/Videos/2.mp4" type="video/mp4">
+            </video><br>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+

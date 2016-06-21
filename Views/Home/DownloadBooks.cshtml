@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "DownloadBooks";
+}
+<script>
+
+    function search()
+    {
+        $.ajax("../Home/GetHello?Name='Ahmed'", {
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert('Error Occur in AJAX');
+            }
+        });
+    }
+</script>
+<div class="row" style="float:right">
+
+    <div style="margin-right:15px">
+        <form action="/Home/Search" method="post">
+            <input type="text" class="btn" name="q" size="21" style="margin-top:5px;margin-right:5px" maxlength="120"><br>
+            <input type="button" class="btn" value="search" onclick="search()" style="float:right;margin-right:5px">
+        </form>
+    </div>
+
+</div>
+
+<div class="jumbotron">
+    <h1>Virtual Class</h1>
+
+    <img height="200" width="1000" id="img_logo" alt="Logo" src=@Url.Content("~/Images/enchanted_library-851x315.jpg") />
+    <p class="lead" style="color:white">Virtual Class Is Here To serve The Facility You With The Knowledge Which you share with each other.</p>
+
+</div>
+
+
+<div id="menu" style="background-color:#111111;height:900px;width:130px;float:left;">
+
+
+
+    <b>@Html.ActionLink("Download Books", "DownloadBooks", "Home")</b><br>
+    <b>Read Books Online</b><br>
+    
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+    <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf")>C#</a><br>
+
+
+</div>
+
+<div id="content" style="background-color:#EEEEEE;width:1010px ;float:left;">
+    <div style="text-align:center">
+        <div>
+            @foreach (var b in Model)
+            {
+                @b.name
+                string adr = "~ /Books/" + @b.book_url;
+
+                <a href=@Url.Content("~/Books/"+@b.book_url) download="@b.book_url"> Download</a><br><br><br><br>
+            }
+            <br><br><br><br>
+
+            <img height="200" width="200" id="img_logo" src=@Url.Content("~/Images/1546245.jpg") /><br>
+            <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf") download="Csharp_4_0_Th0e_Complete_Reference.pdf">Download</a><br>
+            <img height="200" width="200" id="img_logo" src=@Url.Content("~/Images/asp.jpg") /><br>
+            <a href=@Url.Content("~/Books/Csharp_4_0_The_Complete_Reference.pdf") download="Apress.Pro.ASP.NET.MVC.4.4th.Edition.Dec.2012.pdf">Download</a><br>    
+            <img height="200" width="200" id="img_logo" src=@Url.Content("~/Images/pmbok.png") /><br>
+            <a href=@Url.Content("~/Books/PMBOK_5th.pdf") download="PMBOK_5th.pdf">Download</a><br>
+            <img height="200" width="200" id="img_logo" src=@Url.Content("~/Images/spm.jpg") /><br>
+            <a href=@Url.Content("~/Books/Project_Management_Professional_Study_Guide.pdf") download="Project_Management_Professional_Study_Guide.pdf">Download</a><br>
+        </div>
+        
+    </div>
+   
+</div>
+
+
+
+
+

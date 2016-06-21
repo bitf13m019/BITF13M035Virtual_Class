@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+
+<script>
+    var interval = setInterval(imgSlider, 2000);
+
+    function imgSlider() {
+        var index = 0;
+        var images = ["../Images/2.jpg", "../Images/enchanted_library-851x315.jpg", "../Images/2.jpg", "../Images/3.jpg", "../Images/4.jpg", "../Images/5.jpg", "../Images/6.jpg"];
+        var newImage = Math.floor(Math.random() * 6);
+
+        document.getElementById("img_logo").src = images[newImage] + "";
+        i++;
+        if (i >= 6) {
+            i = 0;
+        }
+
+    }
+</script>
+<body onload="imgSlider()">
+
+    <div class="row" style="float:right">
+        <div style="margin-right:15px">
+            <input type="text"  class="btn" name="q" size="21" style="margin-top:5px;margin-right:5px" maxlength="120"><br>
+            <input type="submit" class="btn" value="search" style="float:right;margin-right:5px">
+        </div>
+
+    </div>
+    <div class="jumbotron" style="margin-bottom:6px">
+
+        <h2>Virtual Class</h2>
+
+        <img height="350" width="1000" id="img_logo" />
+
+        <p class="lead" style="color:white">Virtual Class Is Here To serve The Facility You With The Knowledge Which you share with each other.</p>
+
+    </div>
+
+    <div class="jumbotron1" style="margin-bottom:6px">
+                <h1>Upload Video Tutorials</h1><br>
+                @using (@Html.BeginForm("Videos", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="text" placeholder="Enter Video Title" name="videotutorials">
+                    <input type="file" name="video">
+                    <input type="submit" value="upload">
+                }
+
+    
+        <br><br><br>
+            
+        @using (@Html.BeginForm("Process", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="text" placeholder="Enter Book Title" name="books">
+            <input type="file" name="photo">
+            <input type="submit" value="upload">
+        }
+        
+        </div>
+
+    <br><br><br>
+    <div class="jumbotron1" style="margin-bottom:6px">
+        <form action="/Home/deleteBook">
+         <input type="text" placeholder="Enter The Name Of The Book" name="deleteBook">
+        <input type="submit" value="Delete">
+    </form>
+        <br><br><br>
+        <form action="/Home/deleteVideo">
+            <input type="text" placeholder="Enter The Name Of The Video" name="deleteVideo">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+
+
+
+    
+</body>
